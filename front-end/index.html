@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="coffeeApp">
+	<head>
+		<title>DC Coffee</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
+		<script src="js/controller.js"></script>
+	</head>
+	<body ng-controller="coffeeController">
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="container col-sm-12">
+				<div class="col-sm-6 text-left navbar-left">
+					<a href='/#/'>
+					<img src='images/dcroast.png'>
+					</a>
+				</div>
+				<div class="col-sm-6 text-right navbar-right">
+					<a href='/#/login'>
+					<button class="btn btn-primary" type="submit"> LOGIN </button></a>
+					<a href='/#/register'>
+					<button class="btn btn-primary" type="submit"> REGISTER </button></a>
+					
+				</div>
+			</div>
+		</div>
+		<div ng-view></div>
+		<nav class="footer navbar-default text-center navbar-fixed-bottom">
+			<div class="container">
+				<img src='images/dcroast.png'>
+				<p> &copy 2016 DigitalCrafts BrewHouse</p>
+			</div>
+	</nav>
+	
+</body>
+</html>
