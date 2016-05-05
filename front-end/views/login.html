@@ -1,21 +1,21 @@
 <div class="container-fluid login-body">
   <div class="row">
     <div class="col-sm-12 text-center">
-      <h1>Log In</h1>
-      <h5>Enter username and password below</h5>
+      <h1>Login</h1>
+      <h5>Enter your username and password below</h5>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 registration-wrapper text-center">
+    <div class="col-sm-4 col-sm-offset-4 registration-wrapper text-center">
       <form role="form" ng-submit="loginForm()" id="registration-form" name="registration">
         <h3 class="warning">{{errorMessage}}</h3>
         <div class="form-group">
-          <label>Username:</label>
-          <input class="form-control" type="text" ng-model="username" placeholder="John Smith" minlength="5">
+          <!-- <label>Username:</label> -->
+          <input class="form-control" type="text" ng-model="username" placeholder="Enter Your Username" minlength="5">
         </div>
         <div class="form-group">
-          <label> Password:</label>
-          <input class="form-control" type="password", ng-model="password", placeholder="6 Character Minimum" minlength="6">
+          <!-- <label> Password:</label> -->
+          <input class="form-control" type="password", ng-model="password", placeholder="Enter Your Password" minlength="6">
         </div>
         <div class="button-holder">
           <button class="btn btn-success" type="submit">Log In</button>

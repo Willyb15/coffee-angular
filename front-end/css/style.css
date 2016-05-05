@@ -1,4 +1,14 @@
 /* line 1, ../compass/sass/_base.scss */
+body {
+  overflow-x: hidden;
+  font-family: Geneva, Tahoma, Verdana, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 26.4px;
+}
+
+/* line 13, ../compass/sass/_base.scss */
 img {
   max-width: 100%;
 }
@@ -10,7 +20,7 @@ body {
 
 /* line 4, ../compass/sass/_home.scss */
 .navbar {
-  height: 80px;
+  height: 60px;
   background-color: #284741;
   border-color: black;
 }
@@ -26,25 +36,26 @@ body {
 }
 /* line 24, ../compass/sass/_home.scss */
 .navbar img {
-  height: 75px;
+  height: 55px;
 }
 /* line 28, ../compass/sass/_home.scss */
 .navbar button {
   float: right;
-  margin: 20px 5px;
+  margin: 12px 5px;
 }
 
-/* line 34, ../compass/sass/_home.scss */
+/* line 42, ../compass/sass/_home.scss */
 .footer {
-  height: 50px;
+  height: 60px;
+  font-size: 12px;
 }
 
-/* line 37, ../compass/sass/_home.scss */
+/* line 46, ../compass/sass/_home.scss */
 .footer img {
-  height: 30px;
+  height: 40px;
 }
 
-/* line 41, ../compass/sass/_home.scss */
+/* line 50, ../compass/sass/_home.scss */
 .coffee-cup-background {
   height: 400px;
   width: 100%;
@@ -54,21 +65,29 @@ body {
   background-size: auto;
 }
 
-/* line 50, ../compass/sass/_home.scss */
+/* line 59, ../compass/sass/_home.scss */
 .coffee-cup-text {
   padding-top: 150px;
   padding-left: 100px;
-  color: black;
+  color: white;
 }
 
-/* line 56, ../compass/sass/_home.scss */
+/* line 65, ../compass/sass/_home.scss */
 .works {
   height: 75px;
   background-color: black;
   color: white;
+  font-weight: 300;
+  width: 100%;
+  background-color: #edebe6;
+  height: 100px;
+  line-height: 100px;
+  font-size: 35px;
+  color: #196d46;
+  text-align: center;
 }
 
-/* line 62, ../compass/sass/_home.scss */
+/* line 79, ../compass/sass/_home.scss */
 .step-1 {
   height: 400px;
   width: 100%;
@@ -76,36 +95,36 @@ body {
   background-position: 0px -413px;
   background-size: cover;
 }
-/* line 69, ../compass/sass/_home.scss */
+/* line 86, ../compass/sass/_home.scss */
 .step-1 .title {
   font-size: 40px;
 }
-/* line 73, ../compass/sass/_home.scss */
+/* line 90, ../compass/sass/_home.scss */
 .step-1 .step-1-text {
   padding-top: 75px;
   font-size: 20px;
   color: white;
   padding-left: 75px;
 }
-/* line 80, ../compass/sass/_home.scss */
+/* line 97, ../compass/sass/_home.scss */
 .step-1 p {
   padding-left: 50px;
 }
 
-/* line 85, ../compass/sass/_home.scss */
+/* line 102, ../compass/sass/_home.scss */
 .step-2 {
   width: 100%;
   height: 400px;
   background-color: #edebe6;
 }
-/* line 90, ../compass/sass/_home.scss */
+/* line 107, ../compass/sass/_home.scss */
 .step-2 .step-2-background img {
   margin-left: 70px;
   margin-top: 60px;
   transform: rotate(-10deg);
   border: 10px solid;
 }
-/* line 97, ../compass/sass/_home.scss */
+/* line 114, ../compass/sass/_home.scss */
 .step-2 .step-2-text {
   float: left;
   padding-top: 100px;
@@ -113,19 +132,19 @@ body {
   color: #3a2f27;
 }
 
-/* line 105, ../compass/sass/_home.scss */
+/* line 122, ../compass/sass/_home.scss */
 .step-3 {
   height: 400px;
   width: 100%;
   background: black;
   color: white;
 }
-/* line 111, ../compass/sass/_home.scss */
+/* line 128, ../compass/sass/_home.scss */
 .step-3 img {
   width: 100%;
 }
 
-/* line 116, ../compass/sass/_home.scss */
+/* line 133, ../compass/sass/_home.scss */
 #get-started {
   height: 300px;
   font-family: 'Raleway', sans-serif;
@@ -134,7 +153,7 @@ body {
   background-color: #edebe6;
   margin-bottom: 50px;
 }
-/* line 124, ../compass/sass/_home.scss */
+/* line 141, ../compass/sass/_home.scss */
 #get-started button {
   background-color: #284741;
   height: 60px;
@@ -144,11 +163,11 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-/* line 133, ../compass/sass/_home.scss */
+/* line 150, ../compass/sass/_home.scss */
 #get-started .our-story-button {
   margin-top: 10px;
 }
-/* line 136, ../compass/sass/_home.scss */
+/* line 153, ../compass/sass/_home.scss */
 #get-started h3 {
   margin-top: 15px;
 }
@@ -163,6 +182,11 @@ body {
 /* line 6, ../compass/sass/_registration.scss */
 .registration-form {
   margin-top: 10px;
+}
+
+/* line 10, ../compass/sass/_registration.scss */
+.registration-wrapper {
+  font-weight: bold;
 }
 
 /* line 1, ../compass/sass/_options.scss */
@@ -201,4 +225,44 @@ body {
 /* line 1, ../compass/sass/_login.scss */
 .login-body {
   margin-top: 75px;
+}
+
+/* line 1, ../compass/sass/_shipping.scss */
+#shipping {
+  margin-top: 80px;
+}
+
+/* line 4, ../compass/sass/_shipping.scss */
+.shipping-block {
+  border: 1px solid #d8d3c8;
+  border-radius: 5px;
+  margin: 10px auto;
+  padding: 20px;
+  font-size: 15px;
+}
+
+/* line 11, ../compass/sass/_shipping.scss */
+.button-holder {
+  margin-bottom: 80px;
+}
+
+/* line 14, ../compass/sass/_shipping.scss */
+.shipping-label {
+  margin-top: 0px;
+}
+
+/* line 1, ../compass/sass/_payment.scss */
+#payment {
+  margin: 10px auto;
+  padding: 20px;
+  font-size: 15px;
+  margin-top: 45px;
+}
+
+/* line 7, ../compass/sass/_payment.scss */
+.payment-block {
+  background-color: white;
+  border-radius: 5px;
+  margin: 30px auto;
+  padding: 30px;
 }

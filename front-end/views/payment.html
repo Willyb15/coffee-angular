@@ -1,0 +1,55 @@
+<div id="payment" class="container">
+<div id="payment-wrapper">
+  <div id="payment-header">Payment </div>
+  <div id="payment-sub-header">Order summary below</div>
+  <div class="payment-block col-xs-12">
+    <h2 class="payment-label">Choices</h2>
+    <div class="choices-holder">
+      <p>Grind</p>
+      <p>Frequency of Delivery</p>
+      <p>Coffee, In Pounds </p>
+    </div>
+    <div class="data-holder">
+      <p></p>
+      <p></p>
+      <p class="margin"></p>
+    </div>
+    <h2 class="payment-label">Delivery Information</h2>
+    <div class="choices-holder">
+      <p>Full Name</p>
+      <p>Address</p>
+      <p>Address2</p>
+      <p>City</p>
+      <p>State</p>
+      <p>Zip</p>
+      <p>Delivery Date</p>
+    </div>
+    <div class="data-holder">
+      <p>{{fullName}}</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p class="margin"></p>
+    </div>
+    <h2 class="payment-label">Current Charge</h2>
+    <div class="choices-holder">
+      <p>Quantity</p>
+      <p>Shipping</p>
+      <p class="total">Total</p>
+    </div>
+    <div class="data-holder">
+      <p>lbs x $20.00/lb = $</p>
+      <p>FREE!</p>
+      <p class="total">$</p>
+    </div>
+  </div>
+  <div class="button-holder col-xs-12">
+    <form name="payment" action="/payment" method="post" class="paymentsubmit">
+      <script data-image="./images/coffee-chair.jpg" data-description="undefined Coffee" data-amount='null' data-locale="auto" class="stripe-button"> </script><a href="/">
+      <input type="button" value="Cancel Order"/></a>
+    </form>
+  </div>
+</div>
+</div>

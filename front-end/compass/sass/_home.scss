@@ -2,7 +2,7 @@ body{
         background-color: #edebe6;
 }
 .navbar {
-    height: 80px;
+    height: 60px;
     background-color: #284741;
     border-color: black;
 
@@ -22,20 +22,29 @@ body{
     }
 
     img {
-        height: 75px;
+        height: 55px;
     }
 
     button {
         float: right;
-        margin: 20px 5px;
+        margin: 12px 5px;
     }
 }
 
+// .icon-holder{
+//     background-color: #737373;
+//     margin-top: 2px;
+//     height: 32px;
+//     border-radius: 4px;
+//     padding-left: 10%;
+// }
+
 .footer{
-    height: 50px;
+    height: 60px;
+    font-size: 12px;
 }
 .footer img{
-    height: 30px;
+    height: 40px;
 }
 
 .coffee-cup-background {
@@ -50,13 +59,21 @@ body{
 .coffee-cup-text {
     padding-top: 150px;
     padding-left: 100px;
-    color: black;
+    color: white;
 }
 
 .works {
     height: 75px;
     background-color: black;
     color: white;
+    font-weight: 300;
+    width: 100%;
+    background-color: #edebe6;
+    height: 100px;
+    line-height: 100px;
+    font-size: 35px;
+    color: #196d46;
+    text-align: center;
 }
 
 .step-1 {
