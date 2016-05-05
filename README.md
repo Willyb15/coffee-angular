@@ -1,43 +1,134 @@
-##DC Roasters Coffee Beans E-Commerce Site
-## Angular.js and Express.js
-###E-Commerce Site built with Angular.js Front End FrameWork and Express.js as the BackEnd FranmeWork
+#DC Roasters Coffee Beans E-Commerce Site (conversion of ('coffee-express')
+###This is an E-Commerce Site with Angular.js Front End FrameWork and Express.js as the BackEnd FrameWork
+###Converting "coffee-express" built only with Express into Front-End with Angular.js and Back-End with Express
+####Created Front End and Back End Directories
+####Setup Angular.js in the Front End Folder
+#####In index.html created header and footer - with 'ng-view' between.
+#####Here we will switch between main.html, login.html, register.html, options.html, etc. which I converted from JADE into html.
+#####Configured controller.js to handle these routes
+```js
+coffeeApp.config(function($routeProvider) {
+    $routeProvider.
+    when('/', {
+        templateUrl: "views/main.html",
+        controller: 'coffeeController'
+    })
+    .when('/register', {
+        templateUrl: "views/register.html",
+        controller: 'coffeeController'        
+    })
+    .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'coffeeController'
+     }).when('/options', {
+        templateUrl: "views/options.html",
+        controller: 'coffeeController'        
+    });
 
-##Got Express up and running and put compass in there - See other readme's for full instruction on installing Express
+});
+```
+####Configured login and register functions to send http requests to MY server I control.
+```js
+var coffeeApp = angular.module('coffeeApp', ['ngRoute']);
+// var apiUrl = 'http://localhost:3020/';
+coffeeApp.controller('coffeeController', function($scope, $http, $location) {
+
+    $scope.loginForm = function(){
+        $http.post('http://localhost:3000/login', {
+            username: $scope.username,
+            password: $scope.password
+        }).then(function successCallback(response){
+            console.log(response.data);
+            if(response.data.success == 'found'){
+                $location.path('/options');
+            }else if(response.data.failure == 'noUser'){
+                $scope.errorMessage = 'No such user in th db';
+            }else if(response.data.failure == 'badPassword'){
+                $scope.errorMessage = 'Bad password for this user.';
+
+            }
+        }, function errorCallback(response){
+
+        });
+    };
+
+   $scope.registerForm = function(){
+        console.log($scope.username);
+        $http.post('http://localhost:3000/register', {
+            username: $scope.username,
+            password: $scope.password,
+            password2: $scope.password2,
+            email: $scope.email
+        }).then(function successCallback(response){
+            console.log(response.data.failure);
+            if(response.data.failure == 'passwordMatch'){
+                $scope.errorMessage = 'Your passwords must match.';
+            }else if(response.data.success == 'added'){
+                $location.path('/options');
+            }
+        }, function errorCallback(response){
+            console.log(response.status);
+        });
+    };
+});
+```
+###Got Express up. See other readme's for full instruction on installing Express
 ```
 express coffee blah blah blah
 ```
-
-###Configured Routes in index.js to render a Redistration Page and Login Page
+###Configured Routes in express to handle Post requests coming from Angular - Registration Page and Login Page
 ```js
-router.get('/register', function(req, res, next){
-	res.render("register", {});
+var express = require('express');
+var router = express.Router();
+var mongoUrl = "mongodb://localhost:27017/coffee";
+var mongoose = require("mongoose");
+var Account = require("../models/accounts");
+var bcrypt = require("bcrypt-nodejs");
+mongoose.connect(mongoUrl);
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    res.render('index', {
+        title: 'Express'
+    });
 });
-// POST
-router.post('/register', function(req, res, next){
-	// user posted: username, email, password, password2
-	res.json(req.body);
-	// res.render("register", {});
+router.post("/register", function(req, res, next){
+	if(req.body.password != req.body.password2){
+		res.json({"failure": "passwordMatch"});
+	}else{
+		var newAccount = new Account({
+			username: req.body.username,
+			password: bcrypt.hashSync(req.body.password),
+			email: req.body.email
+		});
+		newAccount.save();
+		req.session.username = req.body.username;
+		res.json({
+			success: "added"
+		});
+	}
 });
-// Get route for the Login page
-router.get('/login', function(req, res, next){
-	res.render("login", {});
+router.post("/login", function(req, res, next){
+	Account.findOne(
+		{username: req.body.username}, function(err, doc){
+			if(doc == null){
+				res.json({failure: "noUser"});
+			}else{
+				var passwordsMatch = bcrypt.compareSync(req.body.password, doc.password);
+				if(passwordsMatch){
+					req.session.username = req.body.username;
+					res.json({
+						success: "found"
+					});
+				}else{
+					res.json({failure: "badPassword"});
+				}
+			}
+		} 
+	);
 });
-```
-###Created Registration Page in register.jade our route points to
-```jade
-Blah Blah Blah
-.row
-	.col-sm-6.registration-form.text-center
-		form(role="form", action="/register", method="post", id="registration-form", name="registration")
-			.form-group
-				label Username:
-				input.form-control(type="text", name="username", placeholder="Will Bryant", minlength="5")
-			.form-group
-				label Password
-				input.form-control(type="password", name="password", placeholder="6 character minimum", minlength="6")
-Blah Blah BLah
-```
 
+module.exports = router;
+```
 ###Installed mongoose`
 ```
 npm install mongoose --save
@@ -63,62 +154,10 @@ var Account = new Schema({
 });
 module.exports = mongoose.model('Account', Account);
 ```
-###Configured in index.js Post data to save to Database
-```js
-router.post('/register', function(req, res, next){
-	//The user posted: username, email, password, password2
-	if(req.body.password != req.body.password2){
-		res.redirect('/register?failure=password');
-	}
-	var newAccount = new Account({
-		username: req.body.username,
-		password: req.body.password,
-		emailAddress: req.body.email
-	});
-	console.log(newAccount);
-	newAccount.save();
-	res.json(req.body);
-	// res.render('register', {})
-});
-```
-####Redirect to Register Page if Passwords Don't Match
-```js
-if(req.body.password != req.body.password2){
-	res.redirect('/register?failure=password');
-}
-```
-```jade
-.row
-	if(failure)
-		h2 You must enter same password in both fields!
-	.col-sm-6.registration-form.text-center
-		form(role="form", action="/register", method="post", id="registration-form", name="registration")
-```
-###Or Redirect To Options Page
-#####Make options page in options.jade and added _options.scss 
 ###Encrypt Pass Word Inserted into Mongo using bcrypt
 ```
 sudo npm install brypt-nodejs --save
 sudo npm install express-session --save
-```
-###Updated router.post config to contain bcrypt data
-```js
-router.post('/register', function(req, res, next) {
-    //The user posted: username, email, password, password2
-    if (req.body.password != req.body.password2) {
-        res.redirect('/register?failure=password');
-    } else {
-        var newAccount = new Account({
-            username: req.body.username,
-            password: bcrypt.hashSync(req.body.password), 
-            emailAddress: req.body.email
-        });
-		console.log(newAccount);
-		newAccount.save();
-		req.session.username =  req.body.username;
-		res.redirect('/options');
-    }
-});
 ```
 ###Updated index.js and app.js config
 ####Updated index.js intro line (also removed line 7 to be put into app.js.)
@@ -133,26 +172,8 @@ mongoose.connect(mongoUrl);
 ```
 ###Updated app.js file in the config and added app.use
 ```js
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var routes = require('./routes/index');
-var users = require('./routes/users'); 		//not sure
 var session = require ('express-session'); 	//new
 var app = express(); 				//new
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-
 app.use(session({	//new
   secret: 'dc-4life',   //new
   resave: false		//new
