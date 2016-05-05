@@ -184,17 +184,18 @@ router.post("/register", function(req, res, next){
 	if(req.body.password != req.body.password2){
 		res.json({"failure": "passwordMatch"});
 	}else{
+		var token = randtoken.generate(16);		//HERE!
 		var newAccount = new Account({
 			username: req.body.username,
 			password: bcrypt.hashSync(req.body.password),
-			email: req.body.email
+			email: req.body.email,
+			token: token				// HERE!
 		});
 		newAccount.save();
-		var token = randtoken.generate(16);		//RIGHT HERE!!!!
-		console.log(token + "this is the token");  
 		req.session.username = req.body.username;
 		res.json({
-			success: "added"
+			success: "added",
+			token: token				//HERE!!
 		});
 	}
 });
