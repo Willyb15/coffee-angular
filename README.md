@@ -170,4 +170,42 @@ app.use(session({	//new
   resave: false		//new
 })); 
 ```
+###Adding randomly generated token
+```
+npm install rand-token --save
+```
+Update index.js
+```js
+mongoose.connect(mongoUrl);
+// create a token generator with the defualt settings
+var randtoken = require('rand-token');
+
+router.post("/register", function(req, res, next){
+	if(req.body.password != req.body.password2){
+		res.json({"failure": "passwordMatch"});
+	}else{
+		var newAccount = new Account({
+			username: req.body.username,
+			password: bcrypt.hashSync(req.body.password),
+			email: req.body.email
+		});
+		newAccount.save();
+		var token = randtoken.generate(16);		//RIGHT HERE!!!!
+		console.log(token + "this is the token");  
+		req.session.username = req.body.username;
+		res.json({
+			success: "added"
+		});
+	}
+});
+```
+###Updated Schema
+```js
+var Account = new Schema({
+	username: String,
+	password: String,
+	emailAddress: String,
+	token: String
+});
+```
 
