@@ -3,8 +3,7 @@
 ###Converting "coffee-express" built only with Express into Front-End with Angular.js and Back-End with Express
 ####Created Front End and Back End Directories
 ####Setup Angular.js in the Front End Folder
-#####In index.html created header and footer - with 'ng-view' between.
-#####Here we will switch between main.html, login.html, register.html, options.html, etc. which I converted from JADE into html.
+#####In index.html created header and footer - with 'ng-view' between. We will switch between main.html, login.html, register.html, options.html, etc. - converted from JADE into html.
 #####Configured controller.js to handle these routes
 ```js
 coffeeApp.config(function($routeProvider) {
