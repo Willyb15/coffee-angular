@@ -77,19 +77,6 @@ express coffee blah blah blah
 ```
 ###Configured Routes in express to handle Post requests coming from Angular - Registration Page and Login Page
 ```js
-var express = require('express');
-var router = express.Router();
-var mongoUrl = "mongodb://localhost:27017/coffee";
-var mongoose = require("mongoose");
-var Account = require("../models/accounts");
-var bcrypt = require("bcrypt-nodejs");
-mongoose.connect(mongoUrl);
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index', {
-        title: 'Express'
-    });
-});
 router.post("/register", function(req, res, next){
 	if(req.body.password != req.body.password2){
 		res.json({"failure": "passwordMatch"});
@@ -125,7 +112,6 @@ router.post("/login", function(req, res, next){
 		} 
 	);
 });
-
 module.exports = router;
 ```
 ###Installed mongoose`
@@ -169,8 +155,14 @@ var Account = require ('../models/accounts');
 var bcrypt = require ('bcrypt-nodejs');
 mongoose.connect(mongoUrl);
 ```
-###Updated app.js file in the config and added app.use
+###Updated app.js file in the config and added app.use and allowed from cross origin headers
 ```js
+app.use(function(req, res, next) {
+res.header("Access-Control-Allow-Origin", "*");
+res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+next();
+});
+
 var session = require ('express-session'); 	//new
 var app = express(); 				//new
 app.use(session({	//new
