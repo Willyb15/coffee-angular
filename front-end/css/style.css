@@ -222,6 +222,14 @@ body {
   width: 100%;
 }
 
+/* line 29, ../compass/sass/_options.scss */
+.add-border {
+  border: 1px solid #d8d3c8;
+  border-radius: 5px;
+  margin: 30px auto;
+  padding: 30px;
+}
+
 /* line 1, ../compass/sass/_login.scss */
 .login-body {
   margin-top: 75px;

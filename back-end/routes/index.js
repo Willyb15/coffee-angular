@@ -14,72 +14,92 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.post("/register", function(req, res, next){
-	if(req.body.password != req.body.password2){
-		res.json({"failure": "passwordMatch"});
-	}else{
-		var token = randtoken.generate(16);
-		var newAccount = new Account({
-			username: req.body.username,
-			password: bcrypt.hashSync(req.body.password),
-			email: req.body.email,
-			token: token
-		});
-		newAccount.save();
-		req.session.username = req.body.username;
-		res.json({
-			success: "added",
-			token: token
-		});
-	}
+router.get('/getUserData', function(req, res, next){
+    console.log(req.query.token);
+    if(req.query.token == undefined){
+        res.json({'failure':"noToken"});
+    }else{
+        Account.findOne(
+            {token: req.query.token},
+            function (err, doc){
+                if(doc == null){
+                    res.json({failure:"badToken"});
+                }else{
+                    res.json(doc);
+                }
+            }
+        );
+    }
 });
 
-router.post("/login", function(req, res, next){
-	Account.findOne(
-		{username: req.body.username}, function(err, doc){
-			if(doc == null){
-				res.json({failure: "noUser"});
-			}else{
-				var passwordsMatch = bcrypt.compareSync(req.body.password, doc.password);
-				if(passwordsMatch){
-					// req.session.username = req.body.username;
-
-					res.json({
-						success: "found",
-						token: doc.token
-					});
-				}else{
-					res.json({failure: "badPassword"});
-				}
-			}
-		} 
-	);
+router.post("/register", function(req, res, next) {
+    if (req.body.password != req.body.password2) {
+        res.json({
+            "failure": "passwordMatch"
+        });
+    } else {
+        var token = randtoken.generate(16);
+        var newAccount = new Account({
+            username: req.body.username,
+            password: bcrypt.hashSync(req.body.password),
+            email: req.body.email,
+            token: token
+        });
+        newAccount.save();
+        req.session.username = req.body.username;
+        res.json({
+            success: "added",
+            token: token
+        });
+    }
 });
+
+router.post("/login", function(req, res, next) {
+    Account.findOne({
+        username: req.body.username
+    }, function(err, doc) {
+        if (doc === null) {
+            res.json({
+                failure: "noUser"
+            });
+        } else {
+            var passwordsMatch = bcrypt.compareSync(req.body.password, doc.password);
+            if (passwordsMatch) {
+                // req.session.username = req.body.username;
+
+                res.json({
+                    success: "found",
+                    token: doc.token
+                });
+            } else {
+                res.json({
+                    failure: "badPassword"
+                });
+            }
+        }
+    });
+});
+
+router.post('/options', function(req, res, next){
+    Account.update(
+        {token: req.body.token}, //which doc to update
+        {
+            quantity: req.body.quantity, // what to update
+            frequency: req.body.frequency.option, // what to update -- include option because ng-option packags it thus
+            grind: req.body.grind.option // what to update
+        },
+        {multi:true}, //update multiple or not
+        function(err, numberAffected){  
+            console.log(numberAffected);
+            if(numberAffected.ok == 1){
+                //we succeeded in updating.
+                res.json({success: "updated"});
+            }else{
+                res.json({failure: "failedUpdate"});
+            }
+        }
+    );
+});
+
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

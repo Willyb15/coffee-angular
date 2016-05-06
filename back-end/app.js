@@ -27,10 +27,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(session({
-  secret: 'dc-4life',
-  resave: false
+  secret: 'dc4life',
+  resave: false,
+  saveUninitialized: false
 }));
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 
