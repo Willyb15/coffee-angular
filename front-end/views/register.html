@@ -5,11 +5,11 @@
       <h4>Pick a username and password</h4>
     </div>
     <div class="row">
-<div class="col-sm-4 col-sm-offset-4 registration-wrapper">
+      <div class="col-sm-4 col-sm-offset-4 registration-wrapper">
         <form role="form" ng-submit="registerForm(this)" id="registration-form" name="registration">
           <h3 class="warning">{{errorMessage}}</h3>
           <div class="form-group">
-          <label>Username:</label>
+            <label>Username:</label>
             <input class="form-control" type="text" ng-model="username" placeholder="John Smith" minlength="5">
           </div>
           <div class="form-group">
@@ -26,6 +26,8 @@
           <div class="button-holder">
             <button class="btn btn-success" type="submit"> Register</button>
           </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

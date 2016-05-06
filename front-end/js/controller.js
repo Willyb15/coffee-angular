@@ -2,20 +2,6 @@ var coffeeApp = angular.module('coffeeApp', ['ngRoute', 'ngCookies']);
 // var apiUrl = 'http://localhost:3020/';
 coffeeApp.controller('coffeeController', function($scope, $http, $location, $cookies) {
 
-    var apiPath = 'http://localhost:3000/';
-
-    $http.get(apiPath + 'getUserData?token=' + $cookies.get('token'), {}).then(function successCallback(response) {
-        console.log(response);
-        if (response.data.failure == 'badToken') {
-            //User needs to log in
-            $location.path('/register');
-        } else {
-            $scope.userOptions = response.data;
-        }
-    }, function errorCallback(response) {
-        console.log(response.status);
-    });
-
     $scope.loginForm = function() {
         $http.post('http://localhost:3000/login', {
             username: $scope.username,
@@ -25,13 +11,14 @@ coffeeApp.controller('coffeeController', function($scope, $http, $location, $coo
             if (response.data.success == 'found') {
                 $cookies.put('token', response.data.token);
                 $cookies.put('username', $scope.username);
+                $scope.loggedIn = true;
                 $location.path('/options');
             } else if (response.data.failure == 'noUser') {
-                $scope.errorMessage = 'No such user in th db';
+                $scope.errorMessage = 'The username entered was not found';
             } else if (response.data.failure == 'badPassword') {
                 $cookies.put('token', response.data.token);
                 $cookies.put('username', $scope.username);
-                $scope.errorMessage = 'Bad password for this user.';
+                $scope.errorMessage = 'Incorrect password.';
             }
         }, function errorCallback(response) {
 
@@ -39,6 +26,7 @@ coffeeApp.controller('coffeeController', function($scope, $http, $location, $coo
     };
 
     $scope.registerForm = function() {
+
         console.log($scope.username);
         $http.post('http://localhost:3000/register', {
             username: $scope.username,
@@ -50,6 +38,9 @@ coffeeApp.controller('coffeeController', function($scope, $http, $location, $coo
             if (response.data.failure == 'passwordMatch') {
                 $scope.errorMessage = 'Your passwords must match.';
             } else if (response.data.success == 'added') {
+                // store the token and username inside the cookies
+                $cookies.put('token', response.data.token);
+                $cookies.put('username', $scope.username);
                 $location.path('/options');
             }
         }, function errorCallback(response) {
@@ -57,27 +48,79 @@ coffeeApp.controller('coffeeController', function($scope, $http, $location, $coo
         });
     };
 
-    $scope.optionsForm = function(){
+    var apiPath = 'http://localhost:3000';
+
+    $http.get(apiPath + '/getUserData?token=' + $cookies.get('token'), {}).then(function successCallback(response) {
+        console.log(response);
+        if (response.data.failure == 'badToken') {
+            //User needs to log in
+            $location.path('/register?failure=badToken');
+        } else {
+            $scope.userOptions = response.data;
+        }
+    }, function errorCallback(response) {
+        console.log(response.status);
+    });
+
+
+    $scope.optionsForm = function(formID) {
         //Get the appropriate values based on what the user selected
         //Set them up for our AJAX call
+        if (formID == 1) {
             var selectedGrind = $scope.grindTypeOne;
             var selectedQuantity = 2;
             var selectedFrequency = 'weekly';
-            console.log("submit");
-        $http.post(apiPath + 'options', {
-            // quantity: selectedQuantity,
-            // grind: selectedGrind,
-            // frequency: selectedFrequency,
+        } else if (formID == 2) {
+            var selectedGrind = $scope.grindTypeTwo;
+            var selectedQuantity = 8;
+            var selectedFrequency = 'monthly';
+        } else if (formID == 3) {
+            var selectedGrind = $scope.grindTypeThree;
+            var selectedQuantity = $scope.quantity;
+            var selectedFrequency = $scope.frequency;
+        }
+        $http.post(apiPath + '/options', {
+            quantity: selectedQuantity,
+            grind: selectedGrind,
+            frequency: selectedFrequency,
             token: $cookies.get('token')
-        }).then(function successCallback(response){
-            if(response.data.success == 'updated'){
+        }).then(function successCallback(response) {
+            if (response.data.success == 'updated') {
                 $location.path('/shipping');
             }
-        }, function errorCallback(response){
+        }, function errorCallback(response) {
+            console.log("ERROR.");
+        });
+    };
+
+
+    $scope.deliveryForm = function() {
+
+        $http.post(apiPath + '/shipping', {
+            fullname: $scope.fullname,
+            addressOne: $scope.addressOne,
+            addressTwo: $scope.addressTwo,
+            usrCity: $scope.usrCity,
+            usrState: $scope.usrState,
+            usrZip: $scope.usrZip,
+            deliveryDate: $scope.deliveryDate,
+            token: $cookies.get('token')
+        }).then(function successCallback(response) {
+            console.log(response.data.success);
+            if (response.data.success == 'updated') {
+                $location.path('/payment');
+            }
+        }, function errorCallback(response) {
             console.log("ERROR.");
         });
     };
 });
+
+
+
+// TestKey sk_test_Hzydcj3HnTFcI5zCyyzBAeRv
+// Test Publishable pk_test_P02o5AItX3A2yOdCs9oBnQXY 
+
 
 
 coffeeApp.config(function($routeProvider) {
