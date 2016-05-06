@@ -48,19 +48,19 @@ coffeeApp.controller('coffeeController', function($scope, $http, $location, $coo
         });
     };
 
-    var apiPath = 'http://localhost:3000';
+    // var apiPath = 'http://localhost:3000';
 
-    $http.get(apiPath + '/getUserData?token=' + $cookies.get('token'), {}).then(function successCallback(response) {
-        console.log(response);
-        if (response.data.failure == 'badToken') {
-            //User needs to log in
-            $location.path('/register?failure=badToken');
-        } else {
-            $scope.userOptions = response.data;
-        }
-    }, function errorCallback(response) {
-        console.log(response.status);
-    });
+    // $http.get(apiPath + '/getUserData?token=' + $cookies.get('token'), {}).then(function successCallback(response) {
+    //     console.log(response);
+    //     if (response.data.failure == 'badToken') {
+    //         //User needs to log in
+    //         $location.path('/register?failure=badToken');
+    //     } else {
+    //         $scope.userOptions = response.data;
+    //     }
+    // }, function errorCallback(response) {
+    //     console.log(response.status);
+    // });
 
 
     $scope.optionsForm = function(formID) {
