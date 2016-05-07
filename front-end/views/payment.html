@@ -50,7 +50,7 @@
         </div>
         <div class="row">
           <div class="col-sm-6">
-            <p><label>Name: </label> {{userOptions.fullName}}</p>
+            <p><label>Name: </label> {{fullName}}</p>
             <p><label>Address: </label> {{userOptions.addressOne}}</p>
             <p><label>Address (cont.): </label> {{userOptions.address2}}</p>
             <p><label>City: </label> {{userOptions.city}}</p>
@@ -86,7 +86,7 @@
         <div class="col-sm-12 text-center">
           <div class="button-holder">
             <!--             <button type="submit" name="submit" class="btn btn-success btn-lg">Pay With Card</button> -->
-            <form action="" method="POST">
+            <form action="http://localhost:3000/payment" method="POST">
               <script
               src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="pk_test_P02o5AItX3A2yOdCs9oBnQXY"
@@ -96,6 +96,9 @@
               data-image="images/dc-logo.png"
               data-locale="auto">
               </script>
+              <input type="hidden" name="stripeAmount">
+              <input type="hidden" name="stripeEmail" value="testEmail@gmail.com">
+
             </form>
             <button type="submit" name="cancel" class="btn btn-danger btn-lg">Cancel Order</button>
           </div>

@@ -14,6 +14,18 @@ router.get('/', function(req, res, next) {
     });
 });
 
+var stripe = require('stripe')(
+    "sk_test_Hzydcj3HnTFcI5zCyyzBAeRv"
+    );
+router.post('/payment', function(req, res, next){
+    stripe.charges.create({
+        amount: req.body.stripeAmount,
+        currency: 'usd',
+        source: req.body.stripeToken, //obtained with stripe
+        description: "Charge for " + req.body.stripeEmail
+    });
+});
+
 router.get('/getUserData', function(req, res, next){
     console.log(req.query.token);
     if(req.query.token === undefined){

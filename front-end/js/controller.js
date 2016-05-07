@@ -97,7 +97,7 @@ coffeeApp.controller('coffeeController', function($scope, $http, $location, $coo
     $scope.deliveryForm = function() {
 
         $http.post(apiPath + '/shipping', {
-            fullname: $scope.fullname,
+            fullname: $scope.fullName,
             addressOne: $scope.addressOne,
             addressTwo: $scope.addressTwo,
             usrCity: $scope.usrCity,
@@ -112,6 +112,36 @@ coffeeApp.controller('coffeeController', function($scope, $http, $location, $coo
             }
         }, function errorCallback(response) {
             console.log("ERROR.");
+        });
+    };
+
+    $scope.checkoutForm = function() {
+        $http({
+            method: 'POST',
+            url: apiUrl + '/checkout',
+            data: {
+                token: $cookies.get('token'),
+                frequency: $cookies.get('frequency'),
+                quantity: $cookies.get('quantity'),
+                grindType: $cookies.get('grindType'),
+                fullname: $cookies.get('fullname'),
+                addressOne: $cookies.get('addressOne'),
+                addressTwo: $cookies.get('addressTwo'),
+                city: $cookies.get('city'),
+                state: $cookies.get('state'),
+                zip: $cookies.get('zip'),
+                deliveryDate: $cookies.get('deliveryDate')
+            }
+        }).then(function successCallback(response) {
+            if (response.data.failure == 'noToken') {
+                // invalid token, so redirect to login page
+                $location.path('/login');
+            } else if (success = 'tokenMatch') {
+                //redirect to receipt page
+                $location.path('/receipt');
+            }
+        }, function errorCallback(status) {
+            console.log(status);
         });
     };
 });
