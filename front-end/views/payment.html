@@ -1,4 +1,4 @@
-<div class="content" ng-controller="paymentController">
+<!-- <div class="content" ng-controller="paymentController"> -->
   
   <div class="grey-header">
     <div class="row">
@@ -86,7 +86,7 @@
         <div class="col-sm-12 text-center">
           <div class="button-holder">
             <!--             <button type="submit" name="submit" class="btn btn-success btn-lg">Pay With Card</button> -->
-            <form action="http://localhost:3000/payment" method="POST">
+            <form ng-submit="checkoutForm()" action="http://localhost:3000/payment" method="POST">
               <script
               src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="pk_test_P02o5AItX3A2yOdCs9oBnQXY"
