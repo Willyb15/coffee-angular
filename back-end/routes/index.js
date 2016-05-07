@@ -117,12 +117,12 @@ router.post('/shipping', function(req, res, next){
     Account.update(
         {token: req.body.token}, //which doc to update  
         {
-            fullname: req.body.fullname, // what to update
-            address: req.body.addressOne,
-            addres2: req.body.addressTwo,
-            city: req.body.usrCity,
-            state: req.body.usrState,
-            zip: req.body.usrZip,
+            fullName: req.body.fullname, // what to update
+            addressOne: req.body.addressOne,
+            addresTwo: req.body.addressTwo,
+            usrCity: req.body.usrCity,
+            usrState: req.body.usrState,
+            usrZip: req.body.usrZip,
             deliveryDate: req.body.deliveryDate
         },
         {multi:true}, //update multiple or not

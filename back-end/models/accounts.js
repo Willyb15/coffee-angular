@@ -10,12 +10,12 @@ var Account = new Schema({
 	frequency: String,
 	quantity: String, 
 	grind: String,
-	name: String,
-	address: String,
-	address2: String,
-	city: String,
-	state: String,
-	zip: String,
+	fullName: String,
+	addressOne: String,
+	addressTwo: String,
+	usrCity: String,
+	usrState: String,
+	usrZip: String,
 	deliveryDate: String
 
 });

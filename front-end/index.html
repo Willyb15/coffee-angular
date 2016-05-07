@@ -14,7 +14,10 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script src="js/main.js"></script>
 		<script src=js/date.js></script>
+
+
 
 	</head>
 	<body ng-controller="coffeeController">
@@ -26,6 +29,8 @@
 					</a>
 				</div>
 				<div class="col-sm-6 text-right navbar-right">
+				<a ng-href="#/logout">
+					<button class="btn btn-primary" type="submit"> LOGOUT </button></a>
 					<a href='/#/login'>
 					<button class="btn btn-primary" type="submit"> LOGIN </button></a>
 					<a href='/#/register'>
