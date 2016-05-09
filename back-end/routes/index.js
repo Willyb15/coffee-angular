@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.get('/getUserData', function(req, res, next){
+router.post('/getUserData', function(req, res, next){
     console.log(req.query.token);
     if(req.query.token === undefined){
         res.json({'failure':"noToken"});
@@ -59,9 +59,9 @@ router.post("/register", function(req, res, next) {
     }
 });
 
-router.get("/login", function(req, res, next){
-    res.json({message:'Hello Will. This is  JSONn response of your GET to the /login router'});
-});
+// router.get("/login", function(req, res, next){
+//     res.json({message:'Hello Will. This is  JSONn response of your GET to the /login router'});
+// });
 
 router.post("/login", function(req, res, next) {
     Account.findOne({
