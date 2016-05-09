@@ -1,18 +1,17 @@
-<!-- <div class="content" ng-controller="paymentController"> -->
-  
+<div class="content" ng-controller="paymentController">
   <div class="grey-header">
     <div class="row">
-      <div class="col-sm-2 col-sm-offset-2">
-        <i class="fa fa-home" aria-hidden="true"></i> Home
+      <div class="col-sm-2 col-sm-offset-2"><a class=""href="#/">
+        <i class="fa fa-home" aria-hidden="true"></i> Home</a>
       </div>
-      <div class="col-sm-2">
-        <i class="fa fa-check-square-o" aria-hidden="true"></i> Options
+      <div class="col-sm-2 active"><a class="active" href="#/options">
+        <i class="fa fa-check-square-o" aria-hidden="true"></i> Options</a>
       </div>
-      <div class="col-sm-2">
-        <i class="fa fa-truck" aria-hidden="true"></i> Delivery
+      <div class="col-sm-2"><a class="" href="#/shipping">
+        <i class="fa fa-truck" aria-hidden="true"></i> Delivery</a>
       </div>
-      <div class="col-sm-2 active">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout
+      <div class="col-sm-2 active"><a class="" href="#/payment">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</a>
       </div>
     </div>
   </div>
@@ -81,7 +80,8 @@
               <input type="hidden" name="stripeAmount">
               <input type="hidden" name="stripeEmail" value="testEmail@gmail.com">
             </form>
-            <button type="submit" name="cancel" ng-submit="cancelOrder()" class="btn btn-danger btn-lg">Cancel Order</button>
+            <a ng-href="#/home">
+              <button type="submit" name="cancel" ng-submit="cancelOrder()" class="btn btn-danger btn-lg">Cancel Order</button></a>
           </div>
         </div>
       </div>

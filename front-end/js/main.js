@@ -26,6 +26,9 @@ coffeeApp.config(function($routeProvider) {
     }).when('/receipt', {
         templateUrl: 'views/receipt.html',
         controller: 'receiptController'
+    }).when('/story', {
+        templateUrl: 'views/story.html',
+        controller: 'coffeeController'
     }).otherwise({
         redirectTo: '/'
     });
@@ -243,12 +246,13 @@ coffeeApp.controller('paymentController', function($scope, $http, $location, $co
             $scope.userOptions = response.data;
             // console.log($scope.userOptions);
             // console.log($scope.userOptions.quantity);
-            $scope.total =("$" + $scope.userOptions.quantity*20);
+            $scope.total = ("$" + $scope.userOptions.quantity * 20);
             // console.log($scope.total);
         }
     }, function errorCallback(response) {
         console.log(response.status);
     });
+
 
     $scope.checkoutForm = function() {
         console.log('checkoutForm');

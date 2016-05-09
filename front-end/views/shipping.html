@@ -1,4 +1,21 @@
+  <div class="grey-header">
+    <div class="row">
+      <div class="col-sm-2 col-sm-offset-2"><a class=""href="#/">
+        <i class="fa fa-home" aria-hidden="true"></i> Home</a>
+      </div>
+      <div class="col-sm-2 active"><a class="active" href="#/options">
+        <i class="fa fa-check-square-o" aria-hidden="true"></i> Options</a>
+      </div>
+      <div class="col-sm-2"><a class="" href="#/shipping">
+        <i class="fa fa-truck" aria-hidden="true"></i> Delivery</a>
+      </div>
+      <div class="col-sm-2 active"><a class="" href="#/payment">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</a>
+      </div>
+    </div>
+  </div>
 <div id="shipping" class="container" ng-controller="shippingController">
+
   <form ng-submit="shippingForm()">
     <div id="shipping-wrapper" class="col-xs-10 col-xs-offset-2">
       <div id="shipping-header"><h3>Please enter your shipping info</h3></div>
@@ -89,8 +106,8 @@
             </div>
             <div class="form-group">
               <label>Delivery Date</label>
-              <input type="text" id="datepicker" name="deliveryDate" ng-model="deliveryDate" placeholder="mm/dd/yyyy" style="width:100px" class="form-control"/>
-              <input type="hidden" name="shipping"  ng-model="deliveryDate" value="selected"/>
+              <input type="text" id="datepicker" name="deliveryDate" ng-click="deliveryDate" ng-model="deliveryDate" placeholder="mm/dd/yyyy" style="width:100px" class="form-control" value="selected" required="required"/>
+              <input type="hidden" name="shipping"  ng-click="deliveryDate" ng-model="deliveryDate" value="selected"/>
             </div>
           </div>
           <div class="button-holder">
