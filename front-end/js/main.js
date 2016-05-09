@@ -1,5 +1,5 @@
 var coffeeApp = angular.module('coffeeApp', ['ngRoute', 'ngCookies']);
-var apiUrl = 'http://willybman.com/coffee/back-end:3000';
+var apiUrl = 'http://willybman.com/coffee/:3000';
 
 coffeeApp.config(function($routeProvider) {
     $routeProvider.when('/', {
