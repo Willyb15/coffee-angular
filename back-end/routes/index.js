@@ -33,6 +33,7 @@ router.get('/getUserData', function(req, res, next){
 });
 
 router.post("/register", function(req, res, next) {
+    res.json({message:'Hello Will'});
     if (req.body.password != req.body.password2) {
         res.json({
             "failure": "passwordMatch"

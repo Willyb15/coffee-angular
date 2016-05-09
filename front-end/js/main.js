@@ -1,5 +1,5 @@
 var coffeeApp = angular.module('coffeeApp', ['ngRoute', 'ngCookies']);
-var apiUrl = 'http://127.0.0.1:3000/#/';
+var apiUrl = 'http://willybman.com:3000/#';
 
 coffeeApp.config(function($routeProvider) {
     $routeProvider.when('/', {
@@ -55,7 +55,7 @@ coffeeApp.controller('registerController', function($scope, $http, $location, $c
         } else {
             $http({
                 method: 'POST',
-                url: apiUrl + 'register',
+                url: apiUrl + '/register',
                 data: {
                     username: $scope.username,
                     password: $scope.password,
