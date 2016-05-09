@@ -44,11 +44,9 @@ coffeeApp.controller('registerController', function($scope, $http, $location, $c
     console.log('this is the registerController');
     //the location service has access to the query string. 
     //Pull out the property and put the value in the errorMessage
-    if ($location.search().failure == "badToken") {
-        $scope.errorMessage = "You must login to access the requested page.";
-    }
-
-
+    // if ($location.search().failure == "badToken") {
+    //     $scope.errorMessage = "You must login to access the requested page.";
+    // }
     $scope.registerForm = function() {
         if ($scope.password != $scope.password2) {
             $scope.errorMessage = "Your passwords do not match.";
