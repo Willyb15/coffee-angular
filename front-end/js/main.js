@@ -33,9 +33,8 @@ coffeeApp.config(function($routeProvider) {
 
 
 coffeeApp.controller('coffeeController', function($scope) {
-    console.log('this is the coffee pppppppppp controller');
+    console.log('this is the coffee "MAIN" controller');
 });
-
 
 coffeeApp.controller('registerController', function($scope, $http, $location, $cookies) {
     //console.log($location.search());
@@ -116,6 +115,7 @@ coffeeApp.controller('loginController', function($scope, $http, $location, $cook
         });
     };
 });
+
 coffeeApp.controller('logoutController', function($scope, $cookies) {
     $cookies.remove("token");
     $cookies.remove("username");
@@ -162,15 +162,15 @@ coffeeApp.controller('optionsController', function($scope, $http, $location, $co
         if (formID == 1) {
             var selectedGrind = $scope.grindTypeOne;
             var selectedQuantity = 2;
-            var selectedFrequency = 'weekly';
+            var selectedFrequency = $scope.frequencyOne;
         } else if (formID == 2) {
             var selectedGrind = $scope.grindTypeTwo;
             var selectedQuantity = 8;
-            var selectedFrequency = 'monthly';
+            var selectedFrequency = $scope.frequencyTwo;
         } else if (formID == 3) {
             var selectedGrind = $scope.grindTypeThree;
             var selectedQuantity = $scope.quantity;
-            var selectedFrequency = $scope.frequency;
+            var selectedFrequency = $scope.frequencyThree;
         }
         $http.post(apiUrl + '/options', {
             quantity: selectedQuantity,
@@ -207,7 +207,7 @@ coffeeApp.controller('shippingController', function($scope, $http, $location, $c
     $scope.shippingForm = function() {
 
         $http.post(apiUrl + '/shipping', {
-            fullname: $scope.fullname,
+            fullName: $scope.fullName,
             addressOne: $scope.addressOne,
             addressTwo: $scope.addressTwo,
             usrCity: $scope.usrCity,
@@ -215,8 +215,12 @@ coffeeApp.controller('shippingController', function($scope, $http, $location, $c
             usrZip: $scope.usrZip,
             deliveryDate: $scope.deliveryDate,
             token: $cookies.get('token')
+
         }).then(function successCallback(response) {
             console.log(response.data.success);
+            console.log($scope.fullName);
+            console.log($scope.addressOne);
+            console.log($scope.deliveryDate);
             if (response.data.success == 'updated') {
                 $location.path('/payment');
             }
@@ -229,7 +233,7 @@ coffeeApp.controller('shippingController', function($scope, $http, $location, $c
 
 
 coffeeApp.controller('paymentController', function($scope, $http, $location, $cookies) {
-	console.log('this is paymentController');
+    console.log('this is paymentController');
     $http.get(apiUrl + '/getUserData?token=' + $cookies.get('token'), {}).then(function successCallback(response) {
         console.log(response);
         if (response.data.failure == 'badToken') {
@@ -237,6 +241,10 @@ coffeeApp.controller('paymentController', function($scope, $http, $location, $co
             $location.path('/register?failure=badToken');
         } else {
             $scope.userOptions = response.data;
+            // console.log($scope.userOptions);
+            // console.log($scope.userOptions.quantity);
+            $scope.total =("$" + $scope.userOptions.quantity*20);
+            // console.log($scope.total);
         }
     }, function errorCallback(response) {
         console.log(response.status);
@@ -245,7 +253,7 @@ coffeeApp.controller('paymentController', function($scope, $http, $location, $co
     $scope.checkoutForm = function() {
         console.log('checkoutForm');
         $http({
-            method: 'POST',
+            method: 'GET',
             url: apiUrl + '/payment',
             data: {
                 token: $cookies.get('token'),

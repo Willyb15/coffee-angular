@@ -191,44 +191,64 @@ body {
 }
 
 /* line 1, ../compass/sass/_options.scss */
+.light-panel {
+  background-color: white;
+  border-radius: 5px;
+  margin: 30px auto;
+  padding: 30px;
+  border: 25px solid #edebe6;
+}
+
+/* line 9, ../compass/sass/_options.scss */
 .options-content {
   margin-top: 65px;
   margin-bottom: 40px;
   background-color: #edebe6;
 }
 
-/* line 7, ../compass/sass/_options.scss */
+/* line 15, ../compass/sass/_options.scss */
 .header-row {
   margin-bottom: -5px;
 }
 
-/* line 10, ../compass/sass/_options.scss */
+/* line 19, ../compass/sass/_options.scss */
 .plan-row {
   diplay: inline;
 }
-/* line 13, ../compass/sass/_options.scss */
+/* line 22, ../compass/sass/_options.scss */
 .plan-row .individual-plan {
   background: white;
   border: 35px solid #edebe6;
   min-width: 350px;
 }
-/* line 19, ../compass/sass/_options.scss */
+/* line 28, ../compass/sass/_options.scss */
 .plan-row .family-plan {
   background: white;
   border: 35px solid #edebe6;
   min-width: 350px;
 }
-/* line 24, ../compass/sass/_options.scss */
+/* line 34, ../compass/sass/_options.scss */
 .plan-row img {
   width: 100%;
 }
 
-/* line 29, ../compass/sass/_options.scss */
+/* line 39, ../compass/sass/_options.scss */
 .add-border {
   border: 1px solid #d8d3c8;
   border-radius: 5px;
   margin: 30px auto;
   padding: 30px;
+}
+
+/* line 46, ../compass/sass/_options.scss */
+select {
+  height: 30px;
+  width: 150px;
+}
+
+/* line 51, ../compass/sass/_options.scss */
+.option-button-holder {
+  margin-top: 15px;
 }
 
 /* line 1, ../compass/sass/_login.scss */

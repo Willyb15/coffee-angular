@@ -20,6 +20,7 @@
             <h4>Price per cup:  </h4>
             <h4>Weekly total:  </h4>
             <h4>Grind type:  </h4>
+            <h4>Frequency: </h4>
           </div>
           <div class="col-sm-6 text-left">
             <h4>  14</h4>
@@ -28,42 +29,49 @@
             <select ng-model="grindTypeOne" ng-options="grind.option for grind in grinds">
               <option value=""></option>
             </select>
+            <select ng-model="frequencyOne" ng-options="freq.option for freq in frequencies">
+              <option value=""></option>
+            </select>
           </div>
-          <div class="col-sm-12 text-center">
+          <div class="col-sm-12 text-center option-button-holder">
             <button type="submit" class="btn btn-success btn-lg">Submit</button>
             <p class="add-margin">Shipping is always free.</p>
             <p>Skip any week. Cancel any time.</p>
           </div>
         </div>
       </div>
-  </form>
-  <form id="options-form" ng-submit="optionsForm(2)">
-    <div class="col-sm-6 text-center light-panel">
-      <div class="container-fluid">
-        <h1>Family Plan</h1>
-        <p>For those who drink together</p><img src="images/coffeedrinkers.jpg" class="img-responsive">
-        <div class="col-sm-6 text-right">
-          <h4>Cups per week:  </h4>
-          <h4>Price per cup:  </h4>
-          <h4>Weekly total:  </h4>
-          <h4>Grind type:  </h4>
-        </div>
-        <div class="col-sm-6 text-left">
-          <h4>  40</h4>
-          <h4>  $0.45</h4>
-          <h4>  $18.00</h4>
-          <select ng-model="grindTypeTwo" ng-options="grind.option for grind in grinds">
-            <option value=""></option>
-          </select>
-        </div>
-        <div class="col-sm-12 text-center">
-          <button type="submit" class="btn btn-success btn-lg">Submit</button>
-          <p class="add-margin">Shipping is always free.</p>
-          <p>Skip any week. Cancel any time.</p>
+    </form>
+    <form id="options-form" ng-submit="optionsForm(2)">
+      <div class="col-sm-6 text-center light-panel">
+        <div class="container-fluid">
+          <h1>Family Plan</h1>
+          <p>For those who drink together</p><img src="images/coffeedrinkers.jpg" class="img-responsive">
+          <div class="col-sm-6 text-right">
+            <h4>Cups per week:  </h4>
+            <h4>Price per cup:  </h4>
+            <h4>Weekly total:  </h4>
+            <h4>Grind type:  </h4>
+            <h4>Frequency </h4>
+          </div>
+          <div class="col-sm-6 text-left">
+            <h4>  40</h4>
+            <h4>  $0.45</h4>
+            <h4>  $18.00</h4>
+            <select ng-model="grindTypeTwo" ng-options="grind.option for grind in grinds">
+              <option value=""></option>
+            </select>
+            <select ng-model="frequencyTwo" ng-options="freq.option for freq in frequencies">
+              <option value=""></option>
+            </select>
+          </div>
+          <div class="col-sm-12 text-center option-button-holder">
+            <button type="submit" class="btn btn-success btn-lg">Submit</button>
+            <p class="add-margin">Shipping is always free.</p>
+            <p>Skip any week. Cancel any time.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
   </div>
   <form id="options-form" ng-submit="optionsForm(3)">
     <div class="row">
@@ -81,7 +89,7 @@
       <div class="col-sm-6">
         <h1>1. FREQUENCY</h1>
         <p>How often would you like to send you your coffee?</p>
-        <select ng-model="frequency" ng-options="freq.option for freq in frequencies">
+        <select ng-model="frequencyThree" ng-options="freq.option for freq in frequencies">
           <option value=""></option>
         </select>
         <p>You can cancel or skip any time.</p>

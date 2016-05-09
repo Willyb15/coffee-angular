@@ -14,18 +14,6 @@ router.get('/', function(req, res, next) {
     });
 });
 
-var stripe = require('stripe')(
-    "sk_test_Hzydcj3HnTFcI5zCyyzBAeRv"
-    );
-router.post('/payment', function(req, res, next){
-    stripe.charges.create({
-        amount: req.body.stripeAmount,
-        currency: 'usd',
-        source: req.body.stripeToken, //obtained with stripe
-        description: "Charge for " + req.body.stripeEmail
-    });
-});
-
 router.get('/getUserData', function(req, res, next){
     console.log(req.query.token);
     if(req.query.token === undefined){
@@ -117,7 +105,7 @@ router.post('/shipping', function(req, res, next){
     Account.update(
         {token: req.body.token}, //which doc to update  
         {
-            fullName: req.body.fullname, // what to update
+            fullName: req.body.fullName, // what to update
             addressOne: req.body.addressOne,
             addresTwo: req.body.addressTwo,
             usrCity: req.body.usrCity,
@@ -136,6 +124,18 @@ router.post('/shipping', function(req, res, next){
             }
         }
     );
+});
+
+var stripe = require('stripe')(
+    "sk_test_Hzydcj3HnTFcI5zCyyzBAeRv"
+    );
+router.post('/payment', function(req, res, next){
+    stripe.charges.create({
+        amount: req.body.stripeAmount,
+        currency: 'usd',
+        source: req.body.stripeToken, //obtained with stripe
+        description: "Charge for " + req.body.stripeEmail
+    });
 });
 
 

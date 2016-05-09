@@ -8,7 +8,7 @@ var Account = new Schema({
 	emailAddress: String,
 	token: String,
 	frequency: String,
-	quantity: String, 
+	quantity: Number, 
 	grind: String,
 	fullName: String,
 	addressOne: String,

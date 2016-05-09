@@ -25,24 +25,6 @@
         </div>
       </div>
       <div class="container light-panel">
-        
-        <div class="row">
-          <div class="col-sm-12">
-            <h1>Choices</h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <p>Grind</p>
-            <p>Frequency of Delivery</p>
-            <p>Coffee (lbs)</p>
-          </div>
-          <div class="col-sm-6">
-            <p>{{grindType}}</p>
-            <p>{{frequency}}</p>
-            <p>{{quantity}}</p>
-          </div>
-        </div>
         <div class="row">
           <div class="col-sm-12">
             <h1>Delivery Information</h1>
@@ -50,12 +32,12 @@
         </div>
         <div class="row">
           <div class="col-sm-6">
-            <p><label>Name: </label> {{fullName}}</p>
+            <p><label>Name: </label> {{userOptions.fullName}}</p>
             <p><label>Address: </label> {{userOptions.addressOne}}</p>
             <p><label>Address (cont.): </label> {{userOptions.address2}}</p>
-            <p><label>City: </label> {{userOptions.city}}</p>
-            <p><label>State: </label> {{userOptions.state}}</p>
-            <p><label>Zip: </label> {{userOptions.zip}}</p>
+            <p><label>City: </label> {{userOptions.usrCity}}</p>
+            <p><label>State: </label> {{userOptions.usrState}}</p>
+            <p><label>Zip: </label> {{userOptions.usrZip}}</p>
             <p><label>Delivery Date: </label> {{userOptions.deliveryDate}}</p>
           </div>
           <div class="col-sm-6">
@@ -76,7 +58,7 @@
             <h2>Total</h2>
           </div>
           <div class="col-sm-6">
-            <p>{{quantity}}lbs x $20.00/lb = {{total}}</p>
+            <p>{{userOptions.quantity}}lbs x $20.00/lb = {{total}}</p>
             <p>FREE!</p>
             <h2>{{total}}</h2>
           </div>
@@ -99,7 +81,7 @@
               <input type="hidden" name="stripeAmount">
               <input type="hidden" name="stripeEmail" value="testEmail@gmail.com">
             </form>
-            <button type="submit" name="cancel" class="btn btn-danger btn-lg">Cancel Order</button>
+            <button type="submit" name="cancel" ng-submit="cancelOrder()" class="btn btn-danger btn-lg">Cancel Order</button>
           </div>
         </div>
       </div>

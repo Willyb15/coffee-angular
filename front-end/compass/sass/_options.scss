@@ -1,12 +1,21 @@
+.light-panel {
+    background-color: white;
+    border-radius: 5px;
+    margin: 30px auto;
+    padding: 30px;
+    border: 25px solid #edebe6;
+}
+
 .options-content {
     margin-top: 65px;
-    margin-bottom:40px;
+    margin-bottom: 40px;
     background-color: #edebe6;
 }
 
-.header-row{
-    margin-bottom:-5px;
+.header-row {
+    margin-bottom: -5px;
 }
+
 .plan-row {
     diplay: inline;
 
@@ -21,14 +30,24 @@
         border: 35px solid #edebe6;
         min-width: 350px;
     }
-    img{
-    	width:100%;
+
+    img {
+        width: 100%;
     }
 }
 
-.add-border{
+.add-border {
     border: 1px solid #d8d3c8;
     border-radius: 5px;
     margin: 30px auto;
     padding: 30px;
+}
+
+select {
+    height: 30px;
+    width: 150px;
+}
+
+.option-button-holder {
+    margin-top: 15px;
 }
