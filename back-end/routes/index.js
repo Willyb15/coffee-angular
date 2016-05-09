@@ -32,7 +32,7 @@ router.get('/getUserData', function(req, res, next){
     }
 });
 
-router.post("#/register", function(req, res, next) {
+router.post("/#/register", function(req, res, next) {
     if (req.body.password != req.body.password2) {
         res.json({
             "failure": "passwordMatch"
@@ -54,7 +54,7 @@ router.post("#/register", function(req, res, next) {
     }
 });
 
-router.post("#/login", function(req, res, next) {
+router.post("/#/login", function(req, res, next) {
     Account.findOne({
         username: req.body.username
     }, function(err, doc) {
