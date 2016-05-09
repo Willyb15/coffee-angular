@@ -32,6 +32,10 @@ router.get('/getUserData', function(req, res, next){
     }
 });
 
+router.get("/register", function(req, res, next){
+    res.json({message:'Hello Will. This is a GET to the /register router'});
+});
+
 router.post("/register", function(req, res, next) {
     res.json({message:'Hello Will'});
     if (req.body.password != req.body.password2) {
