@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.post('/getUserData', function(req, res, next){
+router.get('/getUserData', function(req, res, next){
     console.log(req.query.token);
     if(req.query.token === undefined){
         res.json({'failure':"noToken"});
