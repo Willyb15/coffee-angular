@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongoUrl = "mongodb://willybman.com:27017/coffee";
+var mongoUrl = "mongodb://localhost:27017/coffee";
 var mongoose = require("mongoose");
 var Account = require("../models/accounts");
 var bcrypt = require("bcrypt-nodejs");
@@ -124,18 +124,21 @@ router.post('/shipping', function(req, res, next){
             }
         }
     );
-});
+});00
 
 var stripe = require('stripe')(
     "sk_test_Hzydcj3HnTFcI5zCyyzBAeRv"
     );
 router.post('/payment', function(req, res, next){
     stripe.charges.create({
-        amount: req.body.stripeAmount,
+        amount: 1000,
+        // req.body.stripeAmount,
         currency: 'usd',
         source: req.body.stripeToken, //obtained with stripe
         description: "Charge for " + req.body.stripeEmail
     });
+    res.json({message: 'success'});
+    console.log('router.post/payment');
 });
 
 

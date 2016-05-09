@@ -82,7 +82,7 @@ body{
     height: 400px;
     width: 100%;
     background-image: url("../images/CoffeeBags.jpg");
-    background-position: 0px -420px;
+    background-position: 0px -425px;
     background-size: cover;
 
     .title {
@@ -99,6 +99,10 @@ body{
     p {
         padding-left: 50px;
     }
+}
+
+.arrow-holder{
+   background-color: #3a2f27;
 }
 
 .step-2 {

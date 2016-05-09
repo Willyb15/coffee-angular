@@ -1,90 +1,78 @@
 <div class="content" ng-controller="paymentController">
   <div class="grey-header">
     <div class="row">
-      <div class="col-sm-2 col-sm-offset-2"><a class=""href="#/">
-        <i class="fa fa-home" aria-hidden="true"></i> Home</a>
-      </div>
-      <div class="col-sm-2 active"><a class="active" href="#/options">
-        <i class="fa fa-check-square-o" aria-hidden="true"></i> Options</a>
-      </div>
-      <div class="col-sm-2"><a class="" href="#/shipping">
-        <i class="fa fa-truck" aria-hidden="true"></i> Delivery</a>
-      </div>
-      <div class="col-sm-2 active"><a class="" href="#/payment">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</a>
-      </div>
+	 <div class="col-sm-2 col-sm-offset-2"><a class=""href="#/">
+	 <i class="fa fa-home" aria-hidden="true"></i> Home</a>
     </div>
+    <div class="col-sm-2 active"><a class="active" href="#/options">
+    <i class="fa fa-check-square-o" aria-hidden="true"></i> Options</a>
   </div>
-  <div class="container" id="payment">
-    <form ng-submit="checkoutForm()">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1>Payment</h1>
-          <h5>Order summary below</h5>
-        </div>
-      </div>
-      <div class="container light-panel">
-        <div class="row">
-          <div class="col-sm-12">
-            <h1>Delivery Information</h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <p><label>Name: </label> {{userOptions.fullName}}</p>
-            <p><label>Address: </label> {{userOptions.addressOne}}</p>
-            <p><label>Address (cont.): </label> {{userOptions.address2}}</p>
-            <p><label>City: </label> {{userOptions.usrCity}}</p>
-            <p><label>State: </label> {{userOptions.usrState}}</p>
-            <p><label>Zip: </label> {{userOptions.usrZip}}</p>
-            <p><label>Delivery Date: </label> {{userOptions.deliveryDate}}</p>
-          </div>
-          <div class="col-sm-6">
-            <p><label>Grind Type: </label> {{userOptions.grind}}</p>
-            <p><label>Frequency: </label> {{userOptions.frequency}}</p>
-            <p><label>Quantity: </label> {{userOptions.quantity}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <h1>Current Charge</h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <p>Quantity</p>
-            <p>Shipping</p>
-            <h2>Total</h2>
-          </div>
-          <div class="col-sm-6">
-            <p>{{userOptions.quantity}}lbs x $20.00/lb = {{total}}</p>
-            <p>FREE!</p>
-            <h2>{{total}}</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 text-center">
-          <div class="button-holder">
-            <!--             <button type="submit" name="submit" class="btn btn-success btn-lg">Pay With Card</button> -->
-            <form ng-submit="checkoutForm()" action="http://localhost:3000/payment" method="POST">
-              <script
-              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="pk_test_P02o5AItX3A2yOdCs9oBnQXY"
-              data-amount="999"
-              data-name="DigitalCrafts BrewHouse"
-              data-description="Widget"
-              data-image="images/dc-logo.png"
-              data-locale="auto">
-              </script>
-              <input type="hidden" name="stripeAmount">
-              <input type="hidden" name="stripeEmail" value="testEmail@gmail.com">
-            </form>
-            <a ng-href="#/home">
-              <button type="submit" name="cancel" ng-submit="cancelOrder()" class="btn btn-danger btn-lg">Cancel Order</button></a>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+  <div class="col-sm-2"><a class="" href="#/shipping">
+  <i class="fa fa-truck" aria-hidden="true"></i> Delivery</a>
+</div>
+<div class="col-sm-2 active"><a class="" href="#/payment">
+<i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</a>
+</div>
+</div>
+</div>
+<div class="container" id="payment">
+<!-- <form ng-submit="checkoutForm()"> -->
+<div class="row">
+<div class="col-sm-12 text-center">
+<h1>Payment</h1>
+<h5>Order summary below</h5>
+</div>
+</div>
+<div class="container light-panel">
+<div class="row">
+<div class="col-sm-12">
+  <h1>Delivery Information</h1>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6">
+  <p><label>Name: </label> {{userOptions.fullName}}</p>
+  <p><label>Address: </label> {{userOptions.addressOne}}</p>
+  <p><label>Address (cont.): </label> {{userOptions.address2}}</p>
+  <p><label>City: </label> {{userOptions.usrCity}}</p>
+  <p><label>State: </label> {{userOptions.usrState}}</p>
+  <p><label>Zip: </label> {{userOptions.usrZip}}</p>
+  <p><label>Delivery Date: </label> {{userOptions.deliveryDate}}</p>
+</div>
+<div class="col-sm-6">
+  <p><label>Grind Type: </label> {{userOptions.grind}}</p>
+  <p><label>Frequency: </label> {{userOptions.frequency}}</p>
+  <p><label>Quantity: </label> {{userOptions.quantity}}</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+  <h1>Current Charge</h1>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6">
+  <p>Quantity</p>
+  <p>Shipping</p>
+  <h2>Total</h2>
+</div>
+<div class="col-sm-6">
+  <p>{{userOptions.quantity}}lbs x $20.00/lb = {{total}}</p>
+  <p>FREE!</p>
+  <h2>{{total}}</h2>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12 text-center">
+<div class="button-holder">
+  <!-- <button type="submit" name="submit" class="btn btn-success btn-lg">Pay With Card</button> -->
+<button type="submit" name="cancel" ng-click="submitToStripe()" class="btn btn-success btn-lg">Payment</button></a>
+<a ng-href="#/home">
+<button type="submit" name="cancel" ng-click="cancelOrder()" class="btn btn-danger btn-lg">Cancel</button></a>
+</div>
+</div>
+</div>
+<!-- </form> -->
+</div>
 </div>

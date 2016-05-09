@@ -1,5 +1,5 @@
 var coffeeApp = angular.module('coffeeApp', ['ngRoute', 'ngCookies']);
-var apiUrl = 'http://willybman.com:3000';
+var apiUrl = 'http://localhost:3000';
 
 coffeeApp.config(function($routeProvider) {
     $routeProvider.when('/', {
@@ -252,6 +252,37 @@ coffeeApp.controller('paymentController', function($scope, $http, $location, $co
     }, function errorCallback(response) {
         console.log(response.status);
     });
+    // $scope.total = ("$" + $scope.userOptions.quantity * 20);
+    $scope.submitToStripe = function(){
+        console.log('stripe');
+        var handler = StripeCheckout.configure({
+            key: 'pk_test_P02o5AItX3A2yOdCs9oBnQXY',
+            image: '../images/dc-logo.png',
+            locale: 'auto',
+            token: function(token) {
+                console.log("The token Id is: ");
+                console.log(token.id);
+                $http.post(apiUrl + '/payment', {
+                    amount: 1000,
+                    stripeToken: token.id,
+                    token: $cookies.get('token')
+                    //This will pass amount, stripeToken, and token to /payment
+                }).then(function successCallback(response){
+                    $location.path('/receipt');
+                    console.log('sucess on to receipt');
+                    //if a response of any kind comes back from /payment, it will foward to /thankYou
+                    //You can add logic here to determine if the Stripe charge was successful
+                }, function errorCallback(response){
+                    console.log('this is the error');
+                });
+            }   
+        });         
+        handler.open({
+            name: 'DC Roasters',
+            description: 'Coffee Masters',
+            amount: $scope.total
+        });     
+    };
 
 
     $scope.checkoutForm = function() {
