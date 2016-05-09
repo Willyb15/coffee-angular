@@ -33,7 +33,7 @@ router.get('/getUserData', function(req, res, next){
 });
 
 router.get("/register", function(req, res, next){
-    res.json({message:'Hello Will. This is a GET to the /register router'});
+    res.json({message:'Hello Will. This JSON response to your GET the /register router'});
 });
 
 router.post("/register", function(req, res, next) {
@@ -57,6 +57,10 @@ router.post("/register", function(req, res, next) {
             token: token
         });
     }
+});
+
+router.get("/login", function(req, res, next){
+    res.json({message:'Hello Will. This is  JSONn response of your GET to the /login router'});
 });
 
 router.post("/login", function(req, res, next) {
