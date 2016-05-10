@@ -134,7 +134,7 @@ router.post('/shipping', function(req, res, next){
             }
         }
     );
-});00
+});
 
 var stripe = require('stripe')(
     "sk_test_Hzydcj3HnTFcI5zCyyzBAeRv"
