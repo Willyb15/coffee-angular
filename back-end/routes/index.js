@@ -33,9 +33,9 @@ router.get('/getUserData', function(req, res, next){
     }
 });
 
-// router.get("/register", function(req, res, next){
-//     res.json({message:'Hello Will. This JSON response to your GET the /register router'});
-// });
+router.get("/register", function(req, res, next){
+    res.json({message:'Hello Will. This JSON response to your GET the /register router'});
+});
 
 router.post("/register", function(req, res, next) {
     // res.json({message:'Hello Will'});
