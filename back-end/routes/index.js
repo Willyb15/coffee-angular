@@ -8,6 +8,7 @@ mongoose.connect(mongoUrl);
 // create a token generator with the defualt settings
 var randtoken = require('rand-token');
 /* GET home page. */
+console.log('listening on port3000 bitch');
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: 'Express'
