@@ -37,7 +37,7 @@ router.get('/getUserData', function(req, res, next){
 //     res.json({message:'Hello Will. This JSON response to your GET the /register router'});
 // });
 
-router.post("#/register", function(req, res, next) {
+router.post("/register", function(req, res, next) {
     // res.json({message:'Hello Will'});
     if (req.body.password != req.body.password2) {
         res.json({
@@ -64,7 +64,7 @@ router.post("#/register", function(req, res, next) {
 //     res.json({message:'Hello Will. This is  JSONn response of your GET to the /login router'});
 // });
 
-router.post("#/login", function(req, res, next) {
+router.post("/login", function(req, res, next) {
     Account.findOne({
         username: req.body.username
     }, function(err, doc) {
@@ -89,7 +89,7 @@ router.post("#/login", function(req, res, next) {
     });
 });
 
-router.post('#/options', function(req, res, next){
+router.post('/options', function(req, res, next){
     Account.update(
         {token: req.body.token}, //which doc to update
         {
@@ -110,7 +110,7 @@ router.post('#/options', function(req, res, next){
     );
 });
 
-router.post('#/shipping', function(req, res, next){
+router.post('/shipping', function(req, res, next){
     // console.log(req.body.fullname);
     Account.update(
         {token: req.body.token}, //which doc to update  
