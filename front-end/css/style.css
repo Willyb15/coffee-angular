@@ -203,6 +203,11 @@ body {
   font-weight: bold;
 }
 
+/* line 14, ../compass/sass/_registration.scss */
+.fake {
+  color: green;
+}
+
 /* line 1, ../compass/sass/_options.scss */
 .light-panel {
   background-color: white;
