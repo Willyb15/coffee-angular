@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongoUrl = "mongodb://54.193.72.70:27017/coffee";
+var mongoUrl = "mongodb://localhost:27017/coffee";
 var mongoose = require("mongoose");
 var Account = require("../models/accounts");
 var bcrypt = require("bcrypt-nodejs");

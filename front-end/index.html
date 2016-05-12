@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html ng-app="coffeeApp">
-	<head>
-		<title>DC Coffee</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/style.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
-		<script src="js/controller.js"></script>
-		<script type="text/javascript" src="https://code.angularjs.org/1.5.5/angular-cookies.min.js"></script>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="https://checkout.stripe.com/checkout.js"></script>
-		<script src="js/main.js"></script>
-		<script src=js/date.js></script>
+        <head>
+                <title>DC Coffee</title>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+                <link rel="stylesheet" href="css/style.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
+                <script src="js/controller.js"></script>
+                <script type="text/javascript" src="https://code.angularjs.org/1.5.5/angular-cookies.min.js"></script>
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+                <script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+                <script type="text/javascript" src="https://checkout.stripe.com/checkout.js"></script>
+                <script src="js/main.js"></script>
+                <script src=js/date.js></script>
 
 
 
-	</head>
-	<body ng-controller="coffeeController">
-		<div class="navbar navbar-default navbar-fixed-top">
-			<div class="container col-sm-12">
-				<div class="col-sm-6 text-left navbar-left">
-					<a href='/#/'>
-						<img src='images/dcroast.png'>
-					</a>
-				</div>
-				<div class="col-sm-6 text-right navbar-right">
-				<a ng-href="#/logout">
-					<button class="btn btn-primary" type="submit"> LOGOUT </button></a>
-					<a href='/#/login'>
-					<button class="btn btn-primary" type="submit"> LOGIN </button></a>
-					<a href='/#/register'>
-					<button class="btn btn-primary" type="submit"> REGISTER </button></a>
-					
-				</div>
-			</div>
-		</div>
-		<div ng-view></div>
-		<nav class="footer navbar-default text-center navbar-fixed-bottom">
-			<div class="container">
-				<img src='images/dcroast.png'>
-				<p> &copy 2016 DigitalCrafts BrewHouse</p>
-			</div>
-		</nav>
-		
-	</body>
+        </head>
+        <body ng-controller="coffeeController">
+                <div class="navbar navbar-default navbar-fixed-top">
+                        <div class="container col-sm-12">
+                                <div class="col-sm-6 text-left navbar-left">
+                                        <a href='/#/'>
+                                                <img src='images/dcroast.png'>
+                                        </a>
+                                </div>
+                                <div class="col-sm-6 text-right navbar-right">
+                                <a ng-href="#/logout">
+                                        <button class="btn btn-primary" type="submit"> LOGOUT </button></a>
+                                        <a href='willybman.com/coffee/front-end/#/login'>
+                                        <button class="btn btn-primary" type="submit"> LOGIN </button></a>
+                                        <a href='willybman.com/front-end/#/register'>
+                                        <button class="btn btn-primary" type="submit"> REGISTER </button></a>
+
+                                </div>
+                        </div>
+                </div>
+                <div ng-view></div>
+                <nav class="footer navbar-default text-center navbar-fixed-bottom">
+                        <div class="container">
+                                <img src='images/dcroast.png'>
+                                <p> &copy 2016 DigitalCrafts BrewHouse</p>
+                        </div>
+                </nav>
+
+        </body>
 </html>
