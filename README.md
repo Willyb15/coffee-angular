@@ -1,7 +1,7 @@
 #DC Roasters Coffee Beans E-Commerce Site (conversion of ('coffee-express')
 ###This is an E-Commerce Site with Angular.js Front End FrameWork and Express.js as the BackEnd FrameWork
 ###Converting "coffee-express" built only with Express into Front-End with Angular.js and Back-End with Express
-![alt text](img/coffee.png "Description goes here")
+![alt text](front-end/imgages/coffee.png "Description goes here")
 #####Created Front End and Back End Directories
 #####Setup Angular.js in the Front End Folder
 #####In index.html created header and footer - with 'ng-view' between. We will switch between main.html, login.html, register.html, options.html, etc. - converted from JADE into html.
